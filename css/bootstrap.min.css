@@ -4191,19 +4191,19 @@ textarea.input-group-sm > .input-group-btn > .btn {
     overflow-y: visible;
   }
   .navbar-fixed-bottom .navbar-collapse,
-  .navbar-fixed-top .navbar-collapse,
+  .navbar-collapse,
   .navbar-static-top .navbar-collapse {
     padding-right: 0;
     padding-left: 0;
   }
 }
 .navbar-fixed-bottom .navbar-collapse,
-.navbar-fixed-top .navbar-collapse {
+.navbar-collapse {
   max-height: 340px;
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-bottom .navbar-collapse,
-  .navbar-fixed-top .navbar-collapse {
+  .navbar-collapse {
     max-height: 200px;
   }
 }
@@ -4232,23 +4232,18 @@ textarea.input-group-sm > .input-group-btn > .btn {
     border-radius: 0;
   }
 }
-.navbar-fixed-bottom,
-.navbar-fixed-top {
+.navbar-fixed-bottom {
   position: fixed;
   right: 0;
   left: 0;
   z-index: 1030;
 }
 @media (min-width: 768px) {
-  .navbar-fixed-bottom,
-  .navbar-fixed-top {
+  .navbar-fixed-bottom {
     border-radius: 0;
   }
 }
-.navbar-fixed-top {
-  top: 0;
-  border-width: 0 0 1px;
-}
+
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0;
@@ -4572,108 +4567,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 fieldset[disabled] .navbar-default .btn-link:focus,
 fieldset[disabled] .navbar-default .btn-link:hover {
   color: #ccc;
-}
-.navbar-main {
-  background-color: #80c31c;
-  border-color: #bcdd5a;
-}
-.navbar-main .navbar-brand {
-  color: #9d9d9d;
-}
-.navbar-main .navbar-brand:focus,
-.navbar-main .navbar-brand:hover {
-  color: #fff;
-  background-color: transparent;
-}
-.navbar-main .navbar-text {
-  color: #9d9d9d;
-}
-.navbar-main .navbar-nav > li > a {
-  color: #9d9d9d;
-}
-.navbar-main .navbar-nav > li > a:focus,
-.navbar-main .navbar-nav > li > a:hover {
-  color: #fff;
-  background-color: transparent;
-}
-.navbar-main .navbar-nav > .active > a,
-.navbar-main .navbar-nav > .active > a:focus,
-.navbar-main .navbar-nav > .active > a:hover {
-  color: #fff;
-  background-color: #080808;
-}
-.navbar-main .navbar-nav > .disabled > a,
-.navbar-main .navbar-nav > .disabled > a:focus,
-.navbar-main .navbar-nav > .disabled > a:hover {
-  color: #444;
-  background-color: transparent;
-}
-.navbar-main .navbar-toggle {
-  border-color: #333;
-}
-.navbar-main .navbar-toggle:focus,
-.navbar-main .navbar-toggle:hover {
-  background-color: #333;
-}
-.navbar-main .navbar-toggle .icon-bar {
-  background-color: #fff;
-}
-.navbar-main .navbar-collapse,
-.navbar-main .navbar-form {
-  border-color: #101010;
-}
-.navbar-main .navbar-nav > .open > a,
-.navbar-main .navbar-nav > .open > a:focus,
-.navbar-main .navbar-nav > .open > a:hover {
-  color: #fff;
-  background-color: #080808;
-}
-@media (max-width: 767px) {
-  .navbar-main .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: #bcdd5a;
-  }
-  .navbar-main .navbar-nav .open .dropdown-menu .divider {
-    background-color: #080808;
-  }
-  .navbar-main .navbar-nav .open .dropdown-menu > li > a {
-    color: #9d9d9d;
-  }
-  .navbar-main .navbar-nav .open .dropdown-menu > li > a:focus,
-  .navbar-main .navbar-nav .open .dropdown-menu > li > a:hover {
-    color: #fff;
-    background-color: transparent;
-  }
-  .navbar-main .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-main .navbar-nav .open .dropdown-menu > .active > a:focus,
-  .navbar-main .navbar-nav .open .dropdown-menu > .active > a:hover {
-    color: #fff;
-    background-color: #080808;
-  }
-  .navbar-main .navbar-nav .open .dropdown-menu > .disabled > a,
-  .navbar-main .navbar-nav .open .dropdown-menu > .disabled > a:focus,
-  .navbar-main .navbar-nav .open .dropdown-menu > .disabled > a:hover {
-    color: #444;
-    background-color: transparent;
-  }
-}
-.navbar-main .navbar-link {
-  color: #9d9d9d;
-}
-.navbar-main .navbar-link:hover {
-  color: #fff;
-}
-.navbar-main .btn-link {
-  color: #9d9d9d;
-}
-.navbar-main .btn-link:focus,
-.navbar-main .btn-link:hover {
-  color: #fff;
-}
-.navbar-main .btn-link[disabled]:focus,
-.navbar-main .btn-link[disabled]:hover,
-fieldset[disabled] .navbar-main .btn-link:focus,
-fieldset[disabled] .navbar-main .btn-link:hover {
-  color: #444;
 }
 .breadcrumb {
   padding: 8px 15px;

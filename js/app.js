@@ -4,17 +4,18 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 /*Resize header on scroll*/
-window.onscroll = function () {
-  scrollFunction();
-};
+$(function () {
+  var header = $("header");
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
 
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.querySelector(".navbar").style.fontSize = "30px";
-  } else {
-    document.querySelector(".navbar").style.fontSize = "90px";
-  }
-}
+    if (scroll >= 155) {
+      header.removeClass("small").addClass("big");
+    } else {
+      header.removeClass("big").addClass("small");
+    }
+  });
+});
 /*END - Resize header on scroll*/
 
 /*Image Pop-up */

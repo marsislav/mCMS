@@ -1,3 +1,18 @@
 /*Smooth scroll*/
 
 /*END - Smooth scroll*/
+/*Resize header*/
+.big {
+  height: 150px;
+  background: red;
+}
+.small {
+  height: 50px;
+  background: green;
+}
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+/*END - resize header*/
