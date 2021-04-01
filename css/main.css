@@ -3,16 +3,19 @@
 /*END - Smooth scroll*/
 /*Resize header*/
 .big {
-  height: 150px;
-  background: red;
+  height: 120px;
 }
 .small {
-  height: 50px;
-  background: green;
+  height: 70px;
+  background: pink;
 }
 header {
+  height: 120px;
   position: fixed;
   width: 100%;
   top: 0;
+  z-index: 999;
+  background: #7fc21c;
+  border-bottom: 1px solid #bcdd5a;
 }
 /*END - resize header*/

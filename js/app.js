@@ -10,9 +10,19 @@ $(function () {
     var scroll = $(window).scrollTop();
 
     if (scroll >= 155) {
-      header.removeClass("small").addClass("big");
+      header.css({
+        "background-color": "#FF7900",
+        "font-size": "200%",
+        transition: "0.5s",
+        height: "70px",
+      });
     } else {
-      header.removeClass("big").addClass("small");
+      header.css({
+        "background-color": "#80C31C",
+        "font-size": "200%",
+        transition: "0.5s",
+        height: "120px",
+      });
     }
   });
 });
