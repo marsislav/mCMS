@@ -6,15 +6,20 @@
 /*Resize header on scroll*/
 $(function () {
   var header = $("header");
+  var logo = $("header .logoImg");
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
 
-    if (scroll >= 155) {
+    if (scroll >= 170) {
       header.css({
         "background-color": "#FF7900",
         "font-size": "200%",
         transition: "0.5s",
         height: "70px",
+      });
+      logo.css({
+        height: "60px",
+        transition: "0.5s",
       });
     } else {
       header.css({
@@ -22,6 +27,9 @@ $(function () {
         "font-size": "200%",
         transition: "0.5s",
         height: "120px",
+      });
+      logo.css({
+        height: "110px",
       });
     }
   });

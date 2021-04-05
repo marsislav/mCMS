@@ -1,4 +1,10 @@
 <header>
+<div class="logo container">
+  <a class="navbar-brand" href="#">
+    <img src="img/logo.png" alt="Web Company! - mCMS 2.1" class="logoImg"/>
+    <h1><span>W</span>eb <span>C</span>ompany!</h1>
+  </a>
+</div>
       <nav class="navbar" role="navigation">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,9 +20,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"
+            <!--<a class="navbar-brand" href="#"
               ><img src="img/logo.png" alt="" style="max-height: auto"
-            /></a>
+            /><span>W</span>eb <span>C</span>ompany!</a>-->
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div
@@ -32,6 +38,7 @@
                   echo "<li><a href='#'> {$cat_title}</a></li>";
                 }
               ?>
+              <li><a href="admin">Admin</a></li>
             </ul>
           </div>
           <!-- /.navbar-collapse -->

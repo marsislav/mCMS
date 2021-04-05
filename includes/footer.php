@@ -3,7 +3,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <p>Copyright &copy; Your Website 2014</p>
+            <p>Copyright &copy; Web-Company! 2021</p>
+            <p>Copyright &copy; <a href='https://marsislav.net'>Marsislav.NET</a></p>
           </div>
           <!-- /.col-lg-12 -->
         </div>

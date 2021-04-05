@@ -18,4 +18,10 @@ header {
   background: #7fc21c;
   border-bottom: 1px solid #bcdd5a;
 }
+header .logo {
+  font-family: "Kaushan Script", cursive;
+}
+header .logoImg {
+  height: 110px;
+}
 /*END - resize header*/
