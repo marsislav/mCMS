@@ -13,22 +13,7 @@
                 <small>Subheading</small>
               </h1>
               <div class="col-xs-6">
-              <?php
-                if (isset($_POST['submit'])) {
-                  $cat_title=$_POST['cat_title'];
-                  if ($cat_title=="" || empty($cat_title)) {
-                    echo "Enter category title!";
-                  }
-                  else {
-                    $query="INSERT INTO categories(cat_title)";
-                    $query.="VALUE ('{$cat_title}')";
-                    $create_category_query=mysqli_query($connection, $query);
-                    if (!$create_category_query) {
-                      die("QUERY FAILED!" . mysqli_error($connection));
-                    }
-                  }
-                }
-              ?>
+                <?php insertCategories(); ?>
                 <form action="" method="post">
                   <div class="form-group">
                   <label for="cat_title">Add Category</label>
@@ -38,6 +23,13 @@
                     <input type="submit" name="submit" value="Add category" class="btn btn-primary">
                   </div>
                 </form>
+<?php 
+//update categories
+if (isset($_GET['edit'])){
+ $cat_id= $_GET['edit'];
+include "includes/update_categories.php";
+};
+?>
               </div>
 
               <div class="col-xs-6">
@@ -46,30 +38,16 @@
                     <tr>
                       <th>Id</th>
                       <th>Category Title</th>
+                      <th colspan="2">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php
                   //FIND ALL CATEGORIES
-                  $query="SELECT * FROM categories";
-                  $select_categories=mysqli_query($connection, $query);
-                    while ($row=mysqli_fetch_assoc($select_categories)) {
-                      $cat_id=$row['cat_id'];
-                      $cat_title=$row['cat_title'];
-                      echo "<tr>";
-                      echo "<td> {$cat_id}</td>";
-                      echo "<td> {$cat_title}</td>";
-                      echo "<td> <a href='categories.php?delete={$cat_id}'>Delete</a></td>";
-                      echo "</tr>";
-                }
+                 findAllCategories();
                 ?>
-                <?php 
-                  if (isset($_GET['delete'])) {
-                    $the_cat_id=$_GET['delete'];
-                    $query="DELETE FROM categories WHERE cat_id={$the_cat_id}";
-                    $delete_query=mysqli_query($connection, $query);
-                    header("Location: categories.php");
-                  }
+                <?php //DELETE QUERY
+                  deleteCategories();
                 ?>
                   </tbody>
                 </table>

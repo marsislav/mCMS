@@ -18,10 +18,17 @@ header {
   background: #7fc21c;
   border-bottom: 1px solid #bcdd5a;
 }
-header .logo {
+header .logo h1 {
   font-family: "Kaushan Script", cursive;
+  float: left;
+  color: #fff;
+}
+header .navbar-brand img {
+  float: left;
+  margin-right: 15px;
 }
 header .logoImg {
   height: 110px;
 }
+
 /*END - resize header*/
