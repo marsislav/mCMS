@@ -7,8 +7,15 @@ include "includes/header.php";
     <!-- Page Content -->
     <div class="container">
       <div class="row">
+      
         <!-- Blog Entries Column -->
-        <?php $query = "SELECT * FROM posts"; 
+        <?php 
+        //link to specific categories
+            if (isset($_GET['category'])) {
+               $post_category_id=  $_GET['category'];
+            }
+        //end of link to specific categories
+        $query = "SELECT * FROM posts WHERE post_category_id=$post_category_id"; 
         $select_all_posts_query=mysqli_query($connection, $query);
         while ($row=mysqli_fetch_assoc($select_all_posts_query)) {
           

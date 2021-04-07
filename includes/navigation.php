@@ -1,6 +1,6 @@
 <header>
 <div class="logo container">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="index.php">
     <img src="img/logo.png" alt="Web Company! - mCMS 2.1" class="logoImg"/>
     <h1><span>W</span>eb <span>C</span>ompany!</h1>
   </a>
