@@ -3,8 +3,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <p>Copyright &copy; Web-Company! 2021</p>
-            <p>Copyright &copy; <a href='https://marsislav.net'>Marsislav.NET</a></p>
+            <p><a href='https://web-company.org'>Web-Company.ORG</a> || &copy; <?php echo date("Y");?></p>
+            <p><a href='https://marsislav.net'>Marsislav.NET </a>|| &copy; <?php echo date("Y");?></p>
           </div>
           <!-- /.col-lg-12 -->
         </div>

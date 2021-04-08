@@ -3965,6 +3965,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: block;
   padding: 10px 15px;
 }
+/*
 .nav > li > a:focus,
 .nav > li > a:hover {
   text-decoration: none;
@@ -3979,7 +3980,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
-}
+}*/
 .nav .open > a,
 .nav .open > a:focus,
 .nav .open > a:hover {

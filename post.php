@@ -78,13 +78,39 @@ include "includes/header.php";
       <hr />
       
           <!-- Comments Form -->
+
+        <?php
+
+          if(isset($_POST['create_comment'])){
+            
+            $the_post_id=$_GET['p_id'];
+            $comment_author=$_POST['comment_author'];
+            $comment_email=$_POST['comment_email'];
+            $comment_content=$_POST['comment_content'];
+            $query="INSERT INTO comments (comment_post_id, comment_author,  comment_email, comment_content, comment_status, comment_date)";
+            $query.="VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now() )";
+          };
+          $create_comment_query=mysqli_query($connection, $query);
+
+        ?>
+
+
           <div class="well">
             <h4>Leave a Comment:</h4>
-            <form role="form">
-              <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+            <form role="form" action="" method="post">
+            <div class="form-group">
+            <label for="comment_author">Your Name:</label>
+                <input type="text" name="comment_author" class="form-control" placeholder="Enter Your Name here...">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-group">
+              <label for="comment_email">Your Email:</label>
+                <input type="email" name="comment_email" class="form-control"  placeholder="Enter Your Email Address here...">
+              </div>
+              <div class="form-group">
+              <label for="comment_content">Your Comment:</label>
+                <textarea class="form-control" rows="3" placeholder="Your comment goes here..." name="comment_content"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" name="create_comment">Submit comment!</button>
             </form>
           </div>
 

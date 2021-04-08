@@ -7,10 +7,7 @@ foreach ($db as $key=>$value) {
 define (strtoupper($key),$value);
 }
 $connection=mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-if ($connection) {
-    echo "Connection success!";
-}
-else {
-    echo "Connection failed!";
+if (!$connection) {
+    die (mysqli_error($connection));
 }
 ?>

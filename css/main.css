@@ -32,3 +32,24 @@ header .logoImg {
 }
 
 /*END - resize header*/
+
+/*Footer*/
+
+footer {
+  background: #ff7900;
+  border-top: 1px solid #fbb36b;
+  padding: 10px 0;
+}
+footer a,
+footer p,
+footer span {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: rgb(212, 211, 211);
+}
+
+/*End - Footer*/

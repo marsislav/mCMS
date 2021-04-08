@@ -7,6 +7,7 @@ include "includes/header.php";
     <!-- Page Content -->
     <div class="container">
       <div class="row">
+      <div class="col-md-8">
         <!-- Blog Entries Column -->
         <?php $query = "SELECT * FROM posts"; 
         $select_all_posts_query=mysqli_query($connection, $query);
@@ -19,17 +20,14 @@ include "includes/header.php";
           $post_image=$row['post_image'];
           $post_content=substr($row['post_content'],0,100);
           ?>
-<div class="col-md-8">
-          <h1 class="page-header">
-            Page Heading
-            <small>Secondary Text</small>
-          </h1>
+
+          <h2 class="page-header">
+          <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
+            <small>by <a href="index.php"><?php echo $post_author;?></a></small>
+          </h2>
 
           <!-- First Blog Post -->
-          <h2>
-            <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
-          </h2>
-          <p class="lead">by <a href="index.php"><?php echo $post_author;?></a></p>
+
           <p>
             <span class="glyphicon glyphicon-time"></span> <?php echo $post_date;?>
           </p>
@@ -42,14 +40,14 @@ include "includes/header.php";
             alt=""
           />
           </a>
-          <hr />
+          
           <p>
           <?php echo $post_content;?>
           </p>
           <a class="btn btn-primary" href="#"
             >Read More <span class="glyphicon glyphicon-chevron-right"></span
           ></a>
-
+          <hr />
           <!-- Pager 
           <ul class="pager">
             <li class="previous">
@@ -59,10 +57,11 @@ include "includes/header.php";
               <a href="#">Newer &rarr;</a>
             </li>
           </ul>-->
-        </div>
+        
           <?php
         }
         ?>
+        </div>
         
         
 
