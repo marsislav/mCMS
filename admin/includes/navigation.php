@@ -118,6 +118,20 @@
               >
             </li>
             <li>
+              <a href="javascript:;" data-toggle="collapse" data-target="#pages_dropdown"
+                ><i class="fa fa-fw fa-arrows-v"></i> Pages & Navigation
+                <i class="fa fa-fw fa-caret-down"></i
+              ></a>
+              <ul id="pages_dropdown" class="collapse">
+                <li>
+                  <a href="./pages.php">View All Pages</a>
+                </li>
+                <li>
+                  <a href="pages.php?source=add_page">Add Page</a>
+                </li>
+              </ul>
+            </li>
+            <li>
               <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"
                 ><i class="fa fa-fw fa-arrows-v"></i> Posts
                 <i class="fa fa-fw fa-caret-down"></i
@@ -142,7 +156,7 @@
               >
             </li>
            
-            <li class="active">
+            <li>
               <a href="comments.php"
                 ><i class="fa fa-fw fa-file"></i> Comments</a>
             </li>

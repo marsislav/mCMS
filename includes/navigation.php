@@ -31,12 +31,21 @@
           >
             <ul class="nav navbar-nav">
               <?php
-                $query="SELECT * FROM categories";
-                $select_all_categories_query=mysqli_query($connection, $query);
-                while ($row=mysqli_fetch_assoc($select_all_categories_query)) {
-                  $cat_title=$row['cat_title'];
-                  echo "<li><a href='#'> {$cat_title}</a></li>";
+                $query="SELECT * FROM pagenavigation";
+                $select_all_navigation_query=mysqli_query($connection, $query);
+                while ($row=mysqli_fetch_assoc($select_all_navigation_query)) {
+                  $nav_title=$row['nav_title'];
+                  echo "<li><a href='#'> {$nav_title}</a></li>";
                 }
+                
+              ?>
+                            <?php /*   SHOW CATEGORIES ON TOP
+               // $query="SELECT * FROM categories";
+               // $select_all_categories_query=mysqli_query($connection, $query);
+               // while ($row=mysqli_fetch_assoc($select_all_categories_query)) {
+                //  $cat_title=$row['cat_title'];
+                //  echo "<li><a href='#'> {$cat_title}</a></li>";
+                }*/
               ?>
               <li><a href="admin">Admin</a></li>
             </ul>
