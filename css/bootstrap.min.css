@@ -3159,7 +3159,8 @@ fieldset[disabled] .btn-default:hover {
 .btn-primary {
   color: #fff;
   background-color: #ff7900;
-  border-color: #2e6da4;
+  border-color: #fbb36b;
+  transition: all 0.3s;
 }
 .btn-primary.active,
 .btn-primary.focus,
@@ -3168,8 +3169,8 @@ fieldset[disabled] .btn-default:hover {
 .btn-primary:hover,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  background-color: #80c31c;
+  border-color: #bcdd5a;
 }
 .btn-primary.active,
 .btn-primary:active,
@@ -3964,12 +3965,15 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
+  color: #fff;
+  font-size: 22px;
+  transition: 0.3s;
 }
-/*
+
 .nav > li > a:focus,
 .nav > li > a:hover {
   text-decoration: none;
-  background-color: #eee;
+  color: #ffeeaf;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -3980,11 +3984,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
-}*/
+}
 .nav .open > a,
 .nav .open > a:focus,
 .nav .open > a:hover {
-  background-color: #eee;
   border-color: #ff7900;
 }
 .nav .nav-divider {

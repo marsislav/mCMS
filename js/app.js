@@ -24,7 +24,6 @@ $(function () {
     } else {
       header.css({
         "background-color": "#80C31C",
-        "font-size": "200%",
         transition: "0.5s",
         height: "120px",
       });
