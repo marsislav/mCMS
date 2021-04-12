@@ -1,6 +1,6 @@
 <?php 
     if (isset($_POST['create_user'])){
-        echo $user_firstname=$_POST['user_firstname'];
+        $user_firstname=$_POST['user_firstname'];
         $user_lastname=$_POST['user_lastname'];
         $user_role=$_POST['user_role'];
         /*$post_image=$_FILES['image']['name'];
@@ -19,6 +19,7 @@
         $create_user_query=mysqli_query($connection, $query);
         
         confirm($create_user_query);
+        echo "User Created: " . " " . "<a href='users.php'>View Users</a>";
     }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -36,7 +37,7 @@
     <label for="author">User Role</label>
     <select name="user_role" id="user_role">
     <option value="subscriber">Select...</option>
-        <option value="admin">Admin</option>
+        <option value="administrator">Administrator</option>
         <option value="subscriber">Subscriber</option>
         </select>
     </div>

@@ -59,11 +59,11 @@ confirm ($edit_user_query);
     <select name="user_role" id="user_role">
         <option value="subscriber"><?php echo $user_role;?></option>
         <?php 
-            if ($user_role=='admin') {
+            if ($user_role=='administrator') {
                 echo "<option value='subscriber'>Subscriber</option>";
             }
             else {
-                echo "<option value='admin'>Administrator</option>";
+                echo "<option value='administrator'>Administrator</option>";
             }
         ?>
 
