@@ -175,7 +175,7 @@
               </ul>
             </li>
             <li>
-                  <a href="#">Profile</a>
+                  <a href="profile.php">Profile</a>
                 </li>
           </ul>
         </div>
