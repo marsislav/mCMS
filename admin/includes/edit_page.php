@@ -67,9 +67,9 @@ if (isset ($_GET['p_id'])){
     <select name="post_category" id="post_category">
         <?php
             $query="SELECT * FROM categories";
-            $select_pages=mysqli_query($connection, $query);
-            //confirm($select_pages);
-            while ($row=mysqli_fetch_assoc($select_pages)) {
+            $select_categories=mysqli_query($connection, $query);
+            //confirm($select_categories);
+            while ($row=mysqli_fetch_assoc($select_categories)) {
                 $cat_id=$row['cat_id'];
                 $cat_title=$row['cat_title'];
                 echo "<option value='{$cat_id}'>{$cat_title}</option>";

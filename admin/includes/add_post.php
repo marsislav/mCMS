@@ -19,6 +19,9 @@
         $create_post_query=mysqli_query($connection, $query);
         
         confirm($create_post_query);
+        //pull out last created id :
+        $the_post_id=mysqli_insert_id($connection);
+        echo "<p class='bg-success'>Post Created. <a href='../post.php?p_id={$the_post_id}' target='_blank'>View Post.</a> OR <a href='posts.php'>Edit More Posts</a></p>";
     }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -48,8 +51,12 @@
         <input type="text" class="form-control" name="author">
     </div>
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status">
+        <select name="post_status" id="">
+            <option value="draft">Post Status</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+        </select>
+        
     </div>
     <div class="form-group">
         <label for="title">Post Images</label>
@@ -61,7 +68,7 @@
     </div>
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="post_content" id="text_area" cols="30" rows="10"></textarea>
     </div>
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">

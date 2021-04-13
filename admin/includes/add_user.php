@@ -19,7 +19,7 @@
         $create_user_query=mysqli_query($connection, $query);
         
         confirm($create_user_query);
-        echo "User Created: " . " " . "<a href='users.php'>View Users</a>";
+        echo "<p class='bg-success'>User Created: " . " " . "<a href='users.php'>View Users</a></p>";
     }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -55,10 +55,6 @@
     <div class="form-group">
         <label for="user_email">User Email</label>
         <input type="email" class="form-control" name="user_email">
-    </div>
-        <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username">
     </div>
     <div class="form-group">
         <label for="password">Password</label>

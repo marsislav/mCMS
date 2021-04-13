@@ -140,7 +140,7 @@
                 <!-- /.row -->
                 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
@@ -148,47 +148,35 @@
                         <i class="fa fa-file-text fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                  <div class='huge'>12</div>
+                    <?php 
+                        $query="SELECT * FROM pages";
+                        $select_all_pages=mysqli_query($connection, $query);
+                        $pages_count=mysqli_num_rows($select_all_pages);
+                        echo "<div class='huge'>{$pages_count}</div>";
+                      ?>
                         <div>Pages</div>
                     </div>
                 </div>
             </div>
-            <a href="posts.php">
+            <a href="pages.php">
                 <div class="panel-footer">
-                    <span class="pull-left"> NOT WORKING YET! View Details</span>
+                    <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
             </a>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-green">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-comments fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                     <div class='huge'>23</div>
-                      <div>Galleries</div>
-                    </div>
-                </div>
-            </div>
-            <a href="comments.php">
-                <div class="panel-footer">
-                    <span class="pull-left">NOT WORKING YET! View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
+    
     </div>
 </div>
                 <!-- /.row -->
                 <?php
                 
+                $query="SELECT * FROM posts WHERE post_status='published'";
+                $select_all_published_posts=mysqli_query($connection, $query);
+                $post_published_count=mysqli_num_rows($select_all_published_posts);
+
                   $query="SELECT * FROM posts WHERE post_status='draft'";
                   $select_all_draft_posts=mysqli_query($connection, $query);
                   $post_draft_count=mysqli_num_rows($select_all_draft_posts);
@@ -213,9 +201,9 @@
         var data = google.visualization.arrayToDataTable([
           ["Data", "Count"],
           <?php
-            $element_text=['Active Posts', 'Draft Posts', 'Comments', 'Pending Comments', 'Users', 'Subscribers','Categories'];
-            $element_count=[$post_count, $post_draft_count, $comments_count,$unapproved_comments_count,  $users_count, $subscriber_count, $categories_count];
-          for ($i=0; $i < 7; $i++) {
+            $element_text=['All Posts', 'Active Posts', 'Draft Posts', 'Comments', 'Pending Comments', 'Users', 'Subscribers','Categories', 'Pages'];
+            $element_count=[$post_count, $post_published_count, $post_draft_count, $comments_count,$unapproved_comments_count,  $users_count, $subscriber_count, $categories_count, $pages_count];
+          for ($i=0; $i < 9; $i++) {
              echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
           } 
           ?>

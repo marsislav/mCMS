@@ -1,69 +1,39 @@
 <?php 
-    if (isset($_POST['create_post'])){
-        $post_title=$_POST['title'];
-        $post_author=$_POST['author'];
-        $post_category_id=$_POST['post_category'];
-        $post_status=$_POST['post_status'];
-        $post_image=$_FILES['image']['name'];
-        $post_image_temp=$_FILES['image']['tmp_name'];
-        $post_tags=$_POST['post_tags'];
-        $post_content=$_POST['post_content'];
-        $post_date=date('d-m-y');
-        $post_comment_count=555;
+    if (isset($_POST['create_page'])){
+       $page_title=$_POST['page_title'];
 
-        move_uploaded_file($post_image_temp,"../img/$post_image");
+        $page_position=$_POST['page_position'];
+        $page_content=$_POST['page_content'];
+        //$post_date=date('d-m-y');
+        //$post_comment_count=555;
 
-        $query="INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status)";
-        $query.="VALUES({$post_category_id},'{$post_title}', '{$post_author}', now(), '{$post_image}','{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
+        //move_uploaded_file($post_image_temp,"../img/$post_image");
 
-        $create_post_query=mysqli_query($connection, $query);
+        $query="INSERT INTO pages(page_title, page_position, page_content) VALUES('{$page_title}', {$page_position}, '{$page_content}')";
+
+        $create_page_query=mysqli_query($connection, $query);
         
-        confirm($create_post_query);
+        confirm($create_page_query);
     }
 ?>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post">
     <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" class="form-control" name="title">
+        <label for="title">Page Title</label>
+        <input type="text" class="form-control" name="page_title">
+    </div>
+
+
+    <div class="form-group">
+        <label for="author">Position in navigation </label>
+        <span>Legend: 0: not visible in navigation, 1: First position, 2: Seccond position.... N: Last position</span>
+        <input type="number" class="form-control" name="page_position">
     </div>
 
     <div class="form-group">
-    <label for="author">Post Category</label>
-    <select name="post_category" id="post_category">
-        <?php
-            $query="SELECT * FROM categories";
-            $select_categories=mysqli_query($connection, $query);
-            //confirm($select_categories);
-            while ($row=mysqli_fetch_assoc($select_categories)) {
-                $cat_id=$row['cat_id'];
-                $cat_title=$row['cat_title'];
-                echo "<option value='{$cat_id}'>{$cat_title}</option>";
-            }
-        ?>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="author">Post Author</label>
-        <input type="text" class="form-control" name="author">
+        <label for="post_content">Page Content</label>
+        <textarea class="form-control" name="page_content" id="" cols="30" rows="10"></textarea>
     </div>
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status">
-    </div>
-    <div class="form-group">
-        <label for="title">Post Images</label>
-        <input type="file" class="form-control" name="image">
-    </div>
-    <div class="form-group">
-        <label for="title">Post Tags</label>
-        <input type="text" class="form-control" name="post_tags">
-    </div>
-    <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
-    </div>
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
+        <input class="btn btn-primary" type="submit" name="create_page" value="Publish Page">
     </div>
 </form>

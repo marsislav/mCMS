@@ -28,13 +28,36 @@
             class="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
           >
+          <?php /* JUST FOR REFERENCE
+          <?php $query = "SELECT * FROM posts"; 
+        $select_all_posts_query=mysqli_query($connection, $query);
+        while ($row=mysqli_fetch_assoc($select_all_posts_query)) {
+          
+          $post_id=$row['post_id'];
+          $post_title=$row['post_title'];
+          $post_author=$row['post_author'];
+          $post_date=$row['post_date'];
+          $post_image=$row['post_image'];
+          $post_content=substr($row['post_content'],0,100);
+          $post_status=$row['post_status'];
+
+          if ($post_status =='published'){
+          ?>
+
+          <h2 class="page-header">
+          <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
+            <small>by <a href="index.php"><?php echo $post_author;?></a></small>
+          </h2>
+          */
+          ?>
             <ul class="nav navbar-nav">
               <?php
-                $query="SELECT * FROM pagenavigation";
+                $query="SELECT * FROM pages WHERE page_position != '0' ORDER BY page_position ASC";
                 $select_all_navigation_query=mysqli_query($connection, $query);
                 while ($row=mysqli_fetch_assoc($select_all_navigation_query)) {
-                  $nav_title=$row['nav_title'];
-                  echo "<li><a href='#'> {$nav_title}</a></li>";
+                  $page_title=$row['page_title'];
+                  $page_id=$row['page_id'];
+                  echo "<li><a href='page.php?page_id=$page_id'> {$page_title}</a></li>";
                 }
                 
               ?>
@@ -46,6 +69,7 @@
                 //  echo "<li><a href='#'> {$cat_title}</a></li>";
                 }*/
               ?>
+              
               <li><a href="admin">Administrator</a></li>
             </ul>
           </div>
