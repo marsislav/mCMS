@@ -36,7 +36,12 @@ header .logoImg {
 body > .container {
   margin-top: 80px;
 }
-
+/*Pagination*/
+.pager li .active_link {
+  background-color: #7fc21c;
+  color: #fff;
+}
+/*End - pagination*/
 /*Footer*/
 
 footer {
