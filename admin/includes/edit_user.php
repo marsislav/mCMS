@@ -31,13 +31,23 @@
         move_uploaded_file($post_image_temp,"../img/$post_image");
 */
         
+$query="SELECT randSalt FROM users";
+$select_randsalt_query=mysqli_query($connection, $query);
+if (!$select_randsalt_query) {
+    die("Query Failed!" . mysqli_error($connection));
+}
+$row=mysqli_fetch_array($select_randsalt_query);
+$salt=$row['randSalt'];
+$hashed_password=crypt($user_password, $salt);
+
+
 $query="UPDATE users SET ";
 $query.="user_firstname='{$user_firstname}', ";
 $query.="user_lastname='{$user_lastname}', ";
 $query.="user_role='{$user_role}', ";
 $query.="username='{$username}', ";
 $query.="user_email='{$user_email}', ";
-$query.="user_password='{$user_password}' ";
+$query.="user_password='{$hashed_password}' ";
 $query.="WHERE user_id={$the_user_id}";
 $edit_user_query=mysqli_query($connection, $query);
 confirm ($edit_user_query);
@@ -57,7 +67,7 @@ confirm ($edit_user_query);
     <div class="form-group">
     <label for="author">User Role</label>
     <select name="user_role" id="user_role">
-        <option value="subscriber"><?php echo $user_role;?></option>
+        <option value="<?php echo $user_role;?>"><?php echo $user_role;?></option>
         <?php 
             if ($user_role=='administrator') {
                 echo "<option value='subscriber'>Subscriber</option>";

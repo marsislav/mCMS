@@ -16,7 +16,7 @@ header {
   top: 0;
   z-index: 999;
   background: #7fc21c;
-  border-bottom: 1px solid #bcdd5a;
+  box-shadow: 0 4px 10px -2px gray;
 }
 header .logo h1 {
   font-family: "Kaushan Script", cursive;
@@ -32,6 +32,10 @@ header .logoImg {
 }
 
 /*END - resize header*/
+/*MAIN*/
+body > .container {
+  margin-top: 80px;
+}
 
 /*Footer*/
 

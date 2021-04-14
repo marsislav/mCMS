@@ -7,6 +7,7 @@
 $(function () {
   var header = $("header");
   var logo = $("header .logoImg");
+  var navbar = $(".navbar-nav");
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
 
@@ -16,9 +17,14 @@ $(function () {
         "font-size": "200%",
         transition: "0.5s",
         height: "70px",
+        "box-shadow": "0 4px 10px -2px gray",
       });
       logo.css({
         height: "60px",
+        transition: "0.5s",
+      });
+      navbar.css({
+        margin: "4% 0 0 0",
         transition: "0.5s",
       });
     } else {
@@ -26,9 +32,14 @@ $(function () {
         "background-color": "#80C31C",
         transition: "0.5s",
         height: "120px",
+        "box-shadow": "0 4px 10px -2px gray",
       });
       logo.css({
         height: "110px",
+      });
+      navbar.css({
+        margin: "13% 0 0 0",
+        transition: "0.5s",
       });
     }
   });

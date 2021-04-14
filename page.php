@@ -43,9 +43,9 @@ include "includes/header.php";
           </h2>
  
           <hr />
-          <p>
+          <div>
           <?php echo $page_content;?>
-          </p>
+          </div>
 
           <!-- Pager 
           <ul class="pager">
@@ -56,6 +56,7 @@ include "includes/header.php";
               <a href="#">Newer &rarr;</a>
             </li>
           </ul>-->
+        </div>
         </div>
           <?php
         }

@@ -23,9 +23,9 @@ if (isset($_POST['login'])){
        $db_user_role=$row['user_role'];
 
    }
+   $password=crypt($password, $db_password);
 
-   //TO DO - FIX IT later!!!
-   if ($username !== $db_username && $password !==$db_user_password) {
+   if ($username !== $db_username && $password !==$db_password) {
     header("Location:../index.php");
 }
 else if($username==$db_username && $password==$db_password){
