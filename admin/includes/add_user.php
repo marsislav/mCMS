@@ -39,7 +39,7 @@ $user_password=password_hash($user_password, PASSWORD_BCRYPT, array('cost'=>10))
         <label for="author">User Role</label>
         <select name="user_role" id="user_role">
             <option value="subscriber">Select...</option>
-            <option value="administrator">Administrator</option>
+            <option value="admin">Admin</option>
             <option value="subscriber">Subscriber</option>
         </select>
     </div>

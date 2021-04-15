@@ -146,7 +146,7 @@ case 'published':
                 }; ?>
 
 <?php if (isset($_GET['reset'])){
-                    $the_post_id=$_GET['reset'];
+                    $the_post_id=escape($_GET['reset']);
                     $query="UPDATE posts SET post_views_count=0 WHERE post_id=$the_post_id";
                     $reset_query=mysqli_query($connection,$query);
                     confirm($reset_query);

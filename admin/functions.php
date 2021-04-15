@@ -1,4 +1,12 @@
 <?php
+
+function escape ($string) {
+  global $connection;
+  return mysqli_real_escape_string($connection, trim(($string));
+//every time we need to insert a query to DB we need to use this function - for example:
+  //    if (isset($_POST['create_post'])){    $post_title=$_POST['title'];}  we need TO DO     if (isset($_POST['create_post'])){
+       // escape($post_title=$_POST['title']);
+       // TO DO ! IMPORTANT!!!!!!
     function confirm($result){
         global $connection;
         if (!$result) {

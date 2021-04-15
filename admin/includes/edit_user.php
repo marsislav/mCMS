@@ -2,7 +2,7 @@
 
 if(isset($_GET['edit_user'])){
     
-    $the_user_id =  $_GET['edit_user'];
+    $the_user_id = escape($_GET['edit_user']); //TO DO!
 
     $query = "SELECT * FROM users WHERE user_id = $the_user_id ";
     $select_user_by_id = mysqli_query($connection,$query); 
@@ -99,10 +99,10 @@ if(isset($_GET['edit_user'])){
 
             <option value="<?php $user_role;?>"><?php $user_role;?></option>
             <?php
-            if($user_role == 'administrator') {
+            if($user_role == 'admin') {
                 echo "<option value='subsciber'>Subsciber</option>";
             }else {
-                echo "<option value='administrator'>Administrator</option>";
+                echo "<option value='admin'>Admin</option>";
             }
         ?>
 

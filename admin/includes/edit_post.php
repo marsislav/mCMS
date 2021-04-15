@@ -87,7 +87,10 @@ if (isset ($_GET['p_id'])){
     <div class="form-group">
         <label for="author">Post Author</label>
         <select name="post_author" id="post_author">
+            <?php echo "<option value='{$post_author}'>{$post_author}</option>";?>
             <?php
+
+
             $query="SELECT * FROM users";
             $select_author=mysqli_query($connection, $query);
             //confirm($select_categories);

@@ -1,18 +1,18 @@
 <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Username</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Email</th>
-                            <th>User role</th>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>User role</th>
 
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php
                     $query="SELECT * FROM users";
                     $select_users=mysqli_query($connection, $query);
                     while ($row=mysqli_fetch_assoc($select_users)) {
@@ -66,9 +66,9 @@
                     echo "</tr>";
                 }
                     ?>
-                    </tbody>
-                </table>
-                <?php 
+    </tbody>
+</table>
+<?php 
                     if (isset($_GET['change_to_admin'])){
                     $the_user_id=$_GET['change_to_admin'];
                     $query="UPDATE users SET user_role='admin' WHERE user_id=$the_user_id";
@@ -85,10 +85,12 @@
                     header ("Location:users.php");
                 };
 
-                if (isset($_GET['delete'])){
-                    $the_user_id=$_GET['delete'];
+                if (isset($_GET['delete'])){ //MORE SECURE - IMPORTANT! TO FIXX ALLOTHER PAGES! IMPORTANT TO DO!
+                    if (isset($_SESSION['user_role'])){
+                        if($_SESSION['user_role'] == 'admin') {
+                    $the_user_id=mysqli_real_escape_string($connection, $_GET['delete']);
                     $query="DELETE FROM users WHERE user_id={$the_user_id}";
                     $delete_user_query=mysqli_query($connection,$query);
                     confirm($delete_user_query);
                     header ("Location:users.php");
-                }; ?>
+                }}}; ?>

@@ -32,7 +32,7 @@
                 }
                 
               ?>
-                    <li><a href="admin">Administrator</a></li>
+                    <li><a href="admin">Admin</a></li>
                     <li><a href="./registration.php">Registration</a></li>
                 </ul>
             </div>
