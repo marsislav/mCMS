@@ -44,38 +44,38 @@ case 'published':
 }
 ?>
 <form action="" method='post'>
-<table class="table table-bordered table-hover">
-<div id="bulkOptionsContainer" class="col-xs-4">
-    <select name="bulk_options" id="bulk" class="form-control">
-    <option value="">Select Options</option>
-     <option value="published">Publish</option>
-    <option value="draft">Draft</option>
-    <option value="delete">Delete</option>
-    <option value="clone">Clone</option>
-    </select>
-</div>
-<div class="col-xs-4">
-    <input type="submit" name="bulk" class="btn btn-success" value="Apply">
-    <a href="posts.php?source=add_post" class='btn btn-primary'>Add New</a>
-</div>
-                    <thead>
-                        <tr>
-                            <th><input id="selectAllBoxes" type="checkbox"></th>
-                            <th>Id</th>
-                            <th>Author</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Status</th>
-                            <th>Image</th>
-                            <th>Tags</th>
-                            <th>Comments</th>
-                            <th>Date</th>
-                            <th colspan="3">Actions</th>
-                            <th>Views</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+    <table class="table table-bordered table-hover">
+        <div id="bulkOptionsContainer" class="col-xs-4">
+            <select name="bulk_options" id="bulk" class="form-control">
+                <option value="">Select Options</option>
+                <option value="published">Publish</option>
+                <option value="draft">Draft</option>
+                <option value="delete">Delete</option>
+                <option value="clone">Clone</option>
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <input type="submit" name="bulk" class="btn btn-success" value="Apply">
+            <a href="posts.php?source=add_post" class='btn btn-primary'>Add New</a>
+        </div>
+        <thead>
+            <tr>
+                <th><input id="selectAllBoxes" type="checkbox"></th>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Image</th>
+                <th>Tags</th>
+                <th>Comments</th>
+                <th>Date</th>
+                <th colspan="3">Actions</th>
+                <th>Views</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
                     $query="SELECT * FROM posts ORDER BY post_date DESC";
                     $select_posts=mysqli_query($connection, $query);
                     while ($row=mysqli_fetch_assoc($select_posts)) {
@@ -92,8 +92,8 @@ case 'published':
                     
 
                     echo "<tr>"; ?>
-                    <td><input class='checkBoxes' type='checkbox' name='checkBoxAray[]' value='<?php echo $post_id;?>'></td>
-                    <?php
+            <td><input class='checkBoxes' type='checkbox' name='checkBoxAray[]' value='<?php echo $post_id;?>'></td>
+            <?php
                     echo "<td>{$post_id}</td>";
                     echo "<td>{$post_author}</td>";
                     echo "<td>{$post_title}</td>";
@@ -111,7 +111,20 @@ case 'published':
                     echo "<td>{$post_status}</td>";
                     echo "<td><img src='../img/$post_image' width='100'>{$post_image}</td>";
                     echo "<td>{$post_tags}</td>";
-                    echo "<td>{$post_comment_count}</td>";
+
+
+
+                    $query="SELECT * FROM comments WHERE comment_post_id=$post_id";
+                    $send_comment_query=mysqli_query($connection, $query);
+                   // $row=mysqli_fetch_array($send_comment_query);
+                   //$rere= $row['comment_id'];
+                    $count_comments=mysqli_num_rows($send_comment_query);
+
+
+                    echo "<td><a href='./comments.php' title='View comments'>{$count_comments}</a></td>";
+
+
+
                     echo "<td>{$post_date}</td>";
                     echo "<td><a href='../post.php?source&p_id={$post_id}' target='_blank'>View Post</a></td>";
                     echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
@@ -121,10 +134,10 @@ case 'published':
                 }
                     ?>
 
-                    </tbody>
-                </table>
-                </form>
-                <?php if (isset($_GET['delete'])){
+        </tbody>
+    </table>
+</form>
+<?php if (isset($_GET['delete'])){
                     $the_post_id=$_GET['delete'];
                     $query="DELETE FROM posts WHERE post_id={$the_post_id}";
                     $delete_query=mysqli_query($connection,$query);
@@ -132,7 +145,7 @@ case 'published':
                     header ("Location: posts.php");
                 }; ?>
 
-                <?php if (isset($_GET['reset'])){
+<?php if (isset($_GET['reset'])){
                     $the_post_id=$_GET['reset'];
                     $query="UPDATE posts SET post_views_count=0 WHERE post_id=$the_post_id";
                     $reset_query=mysqli_query($connection,$query);

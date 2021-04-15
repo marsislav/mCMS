@@ -1,4 +1,3 @@
-
 <?php
 if (isset ($_GET['p_id'])){
     $the_post_id=$_GET['p_id'];
@@ -64,9 +63,9 @@ if (isset ($_GET['p_id'])){
         <input type="text" class="form-control" name="post_title" value="<?php echo $post_title; ?>">
     </div>
     <div class="form-group">
-    <label for="author">Post Category</label>
-    <select name="post_category" id="post_category">
-        <?php
+        <label for="author">Post Category</label>
+        <select name="post_category" id="post_category">
+            <?php
             $query="SELECT * FROM categories";
             $select_categories=mysqli_query($connection, $query);
             //confirm($select_categories);
@@ -78,14 +77,33 @@ if (isset ($_GET['p_id'])){
         ?>
         </select>
     </div>
+
+    <!--
     <div class="form-group">
         <label for="author">Post Author</label>
         <input type="text" class="form-control" name="post_author" value="<?php echo $post_author;?>">
-    </div>
+    </div>-->
+
     <div class="form-group">
-    <label for="post_status">Post Status</label>
-    <select name="post_status" id="">
-        <option value="<?php echo $post_status;?>"><?php echo $post_status; ?></option>
+        <label for="author">Post Author</label>
+        <select name="post_author" id="post_author">
+            <?php
+            $query="SELECT * FROM users";
+            $select_author=mysqli_query($connection, $query);
+            //confirm($select_categories);
+            while ($row=mysqli_fetch_assoc($select_author)) {
+                $author_id=$row['user_id'];
+                $author_username=$row['username'];
+                echo "<option value='{$author_username}'>{$author_username}</option>";
+            }
+        ?>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="post_status">Post Status</label>
+        <select name="post_status" id="">
+            <option value="<?php echo $post_status;?>"><?php echo $post_status; ?></option>
             <?php
                 if ($post_status=='published') {
                     echo "<option value='draft'>Draft</option>";
@@ -94,13 +112,13 @@ if (isset ($_GET['p_id'])){
                     echo "<option value='published'>Published</option>";
                 }
             ?>
-    </select>
+        </select>
 
     </div>
 
     <div class="form-group">
         <label for="title">Post Images</label>
-        <img src="../img/<?php echo $post_image; ?>" width="200" >
+        <img src="../img/<?php echo $post_image; ?>" width="200">
         <input type="file" name="image">
     </div>
     <div class="form-group">
@@ -109,7 +127,8 @@ if (isset ($_GET['p_id'])){
     </div>
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="text_area" cols="30" rows="10"><?php echo $post_content;?></textarea>
+        <textarea class="form-control" name="post_content" id="text_area" cols="30"
+            rows="10"><?php echo $post_content;?></textarea>
     </div>
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">

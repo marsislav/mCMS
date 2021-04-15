@@ -31,9 +31,9 @@
     </div>
 
     <div class="form-group">
-    <label for="author">Post Category</label>
-    <select name="post_category" id="post_category">
-        <?php
+        <label for="post_category">Post Category</label>
+        <select name="post_category" id="post_category">
+            <?php
             $query="SELECT * FROM categories";
             $select_categories=mysqli_query($connection, $query);
             //confirm($select_categories);
@@ -48,15 +48,30 @@
 
     <div class="form-group">
         <label for="author">Post Author</label>
-        <input type="text" class="form-control" name="author">
+        <select name="author" id="post_author">
+            <?php
+            $query="SELECT * FROM users";
+            $select_users=mysqli_query($connection, $query);
+            //confirm($select_categories);
+            while ($row=mysqli_fetch_assoc($select_users)) {
+                $author_id=$row['user_id'];
+                $author_username=$row['username'];
+                echo "<option value='{$author_username}'>{$author_username}</option>";
+            }
+        ?>
+        </select>
     </div>
+    <!--<div class="form-group">
+        <label for="author">Post Author</label>
+        <input type="text" class="form-control" name="author">
+    </div>-->
     <div class="form-group">
         <select name="post_status" id="">
             <option value="draft">Post Status</option>
             <option value="published">Published</option>
             <option value="draft">Draft</option>
         </select>
-        
+
     </div>
     <div class="form-group">
         <label for="title">Post Images</label>
