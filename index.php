@@ -2,15 +2,16 @@
 include "includes/db.php";
 include "includes/header.php";
 ;?>
-    <!-- Navigation -->
-    <?php include "includes/navigation.php";?>
-    <!-- Page Content -->
-    <div class="container">
-      <div class="row">
-      <div class="col-md-8">
-        <!-- Blog Entries Column -->
-        
-        <?php 
+<!-- Navigation -->
+<?php include "includes/navigation.php";?>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8">
+            <!-- Blog Entries Column -->
+
+            <?php 
         $posts_per_page=5;
         /*Pagination */
         if (isset($_GET['page'])) {
@@ -49,34 +50,30 @@ include "includes/header.php";
           if ($post_status =='published'){
           ?>
 
-          <h2 class="page-header">
-          <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
-            <small>by <a href="author_posts.php?author=<?php echo $post_author;?>&p_id=<?php echo $post_id;?>"><?php echo $post_author;?></a></small>
-          </h2>
+            <h2 class="page-header">
+                <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
+                <small>by <a
+                        href="author_posts.php?author=<?php echo $post_author;?>&p_id=<?php echo $post_id;?>"><?php echo $post_author;?></a></small>
+            </h2>
 
-          <!-- First Blog Post -->
+            <!-- First Blog Post -->
 
-          <p>
-            <span class="glyphicon glyphicon-time"></span> <?php echo $post_date;?>
-          </p>
-          <hr />
-          <a href="post.php?p_id=<?php echo $post_id;?>">
+            <p>
+                <span class="glyphicon glyphicon-time"></span> <?php echo $post_date;?>
+            </p>
+            <hr />
+            <a href="post.php?p_id=<?php echo $post_id;?>">
 
-          <img
-            class="img-responsive"
-            src="img/<?php echo $post_image; ?>"
-            alt=""
-          />
-          </a>
-          
-          <p>
-          <?php echo $post_content . "...";?>
-          </p>
-          <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id;?>"
-            >Read More <span class="glyphicon glyphicon-chevron-right"></span
-          ></a>
-          <hr />
-          <!-- Pager 
+                <img class="img-responsive" src="img/<?php echo $post_image; ?>" alt="" />
+            </a>
+
+            <p>
+                <?php echo $post_content . "...";?>
+            </p>
+            <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id;?>">Read More <span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
+            <hr />
+            <!-- Pager 
           <ul class="pager">
             <li class="previous">
               <a href="#">&larr; Older</a>
@@ -85,22 +82,23 @@ include "includes/header.php";
               <a href="#">Newer &rarr;</a>
             </li>
           </ul>-->
-        
-          <?php
+
+            <?php
         };}
         ?>
         </div>
-        
-        
+
+
 
         <!-- Blog Sidebar Widgets Column -->
         <?php include "includes/sidebar.php";?>
-      </div>
-      <!-- /.row -->
-
-      <hr />
     </div>
-    <ul class="pager">
+    <!-- /.row -->
+
+    <hr />
+</div>
+
+<ul class="pager">
     <?php 
     for ($i=1; $i<=$count; $i++) {
       if ($i==$page) {
@@ -110,5 +108,5 @@ include "includes/header.php";
       echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
     }}
     ?>
-    </ul>
-    <?php include "includes/footer.php";?>
+</ul>
+<?php include "includes/footer.php";?>

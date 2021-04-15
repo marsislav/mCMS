@@ -1,106 +1,124 @@
-<?php 
-    if (isset($_GET['edit_user'])){
-        $the_user_id=$_GET['edit_user'];
+<?php
+
+if(isset($_GET['edit_user'])){
+    
+    $the_user_id =  $_GET['edit_user'];
+
+    $query = "SELECT * FROM users WHERE user_id = $the_user_id ";
+    $select_user_by_id = mysqli_query($connection,$query); 
+
+    while($row = mysqli_fetch_assoc($select_user_by_id)) {
+        $username = $row['username'];
+        $user_firstname = $row['user_firstname'];
+        $user_lastname = $row['user_lastname'];
+        $user_email = $row['user_email'];
+        $user_password = $row['user_password'];
+        $user_image = $row['user_image'];
+        $user_role = $row['user_role'];
         
-        $query="SELECT * FROM users WHERE user_id=$the_user_id";
-        $select_users_query=mysqli_query($connection, $query);
-        while ($row=mysqli_fetch_assoc($select_users_query)) {
-        $user_id=$row['user_id'];
-        $username=$row['username'];
-        $user_password=$row['user_password'];
-        $user_firstname=$row['user_firstname'];
-        $user_lastname=$row['user_lastname'];
-        $user_email=$row['user_email'];
-        $user_image=$row['user_image'];
-        $user_role=$row['user_role'];
+    }
+
+    if(isset($_POST['update_user'])) {
+        $username = $_POST['username'];
+        $user_firstname = $_POST['user_firstname'];
+        $user_lastname = $_POST['user_lastname'];
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+        $user_role = $_POST['user_role'];
+        $user_image =  $_FILES['user_image']['name'];
+        $user_image_temp =  $_FILES['user_image']['tmp_name'];
+        
+
+        move_uploaded_file($user_image_temp, "../images/$user_image");
+
+        if(!empty($user_password)) {
+            $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id";
+            $get_user = mysqli_query($connection, $query_password);
+            confirm($get_user);
+
+            $row = mysqli_fetch_array($get_user);
+            $bd_user_password = $row['user_password'];
+
+            if($bd_user_password != $user_password) {
+                 $hash_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10));
+             }
+
+            $query = "UPDATE users SET ";
+            $query .="username  = '{$username}', ";
+            $query .="user_password  = '{$hash_password}', ";
+            $query .="user_firstname = '{$user_firstname}', ";
+            $query .="user_lastname = '{$user_lastname}', ";
+            // $query .="user_lastname   =  now(), ";
+            $query .="user_email = '{$user_email}', ";
+            $query .="user_role = '{$user_role}', ";
+            $query .="user_image  = '{$user_image}' ";
+            
+            $query .= "WHERE user_id = {$the_user_id} ";
+
+            $update_user = mysqli_query($connection, $query);
+            confirm($update_user);
         }
+       
+    }
+ }else {
+        header("Location: index.php");
     }
 
-    if (isset($_POST['edit_user'])){
-        $user_firstname=$_POST['user_firstname'];
-        $user_lastname=$_POST['user_lastname'];
-        $user_role=$_POST['user_role'];
-        /*$post_image=$_FILES['image']['name'];
-        $post_image_temp=$_FILES['image']['tmp_name'];*/
-        $username=$_POST['username'];
-        $user_email=$_POST['user_email'];
-        $user_password=$_POST['user_password'];
-       // $post_date=date('d-m-y');
-        //$post_comment_count=555;
-/*
-        move_uploaded_file($post_image_temp,"../img/$post_image");
-*/
-        
-$query="SELECT randSalt FROM users";
-$select_randsalt_query=mysqli_query($connection, $query);
-if (!$select_randsalt_query) {
-    die("Query Failed!" . mysqli_error($connection));
-}
-$row=mysqli_fetch_array($select_randsalt_query);
-$salt=$row['randSalt'];
-$hashed_password=crypt($user_password, $salt);
-
-
-$query="UPDATE users SET ";
-$query.="user_firstname='{$user_firstname}', ";
-$query.="user_lastname='{$user_lastname}', ";
-$query.="user_role='{$user_role}', ";
-$query.="username='{$username}', ";
-$query.="user_email='{$user_email}', ";
-$query.="user_password='{$hashed_password}' ";
-$query.="WHERE user_id={$the_user_id}";
-$edit_user_query=mysqli_query($connection, $query);
-confirm ($edit_user_query);
-    }
 ?>
+
+
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="user_firstname">First name</label>
-        <input type="text" class="form-control" name="user_firstname" value="<?php echo $user_firstname; ?>">
+        <label for="title">Username</label>
+        <input value="<?= $username; ?>" type="text" name="username" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="user_lastname">Last name</label>
-        <input type="text" class="form-control" name="user_lastname" value="<?php echo $user_lastname; ?>">
+        <label for="title">Firstname</label>
+        <input value="<?= $user_firstname; ?>" type="text" name="user_firstname" class="form-control">
     </div>
 
     <div class="form-group">
-    <label for="author">User Role</label>
-    <select name="user_role" id="user_role">
-        <option value="<?php echo $user_role;?>"><?php echo $user_role;?></option>
-        <?php 
-            if ($user_role=='administrator') {
-                echo "<option value='subscriber'>Subscriber</option>";
-            }
-            else {
+        <label for="title">Lastname</label>
+        <input value="<?= $user_lastname; ?>" type="text" name="user_lastname" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="title">Email</label>
+        <input value="<?= $user_email; ?>" type="email" name="user_email" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="title">Password</label>
+        <input autocomplete="off" value="" type="text" name="user_password" class="form-control">
+    </div>
+
+    <div class="form-group">
+
+        <select name="user_role" id="" class="form-control">
+
+            <option value="<?php $user_role;?>"><?php $user_role;?></option>
+            <?php
+            if($user_role == 'administrator') {
+                echo "<option value='subsciber'>Subsciber</option>";
+            }else {
                 echo "<option value='administrator'>Administrator</option>";
             }
         ?>
 
-        
+
         </select>
     </div>
-<!--
+
 
     <div class="form-group">
-        <label for="title">User Images</label>
-        <input type="file" class="form-control" name="image">
-    </div>
--->
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" value="<?php echo $username;?>">
-    </div>
-    <div class="form-group">
-        <label for="user_email">User Email</label>
-        <input type="email" class="form-control" name="user_email" value="<?php echo $user_email; ?>">
+        <img width="100" src="../images/<?= $user_image?>" alt="">
+        <input type="file" name="user_image">
     </div>
 
+
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="user_password" value="<?php echo $user_password;?>">
+        <input type="submit" name="update_user" class="btn btn-primary" value="Update User">
     </div>
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="edit_user" value="Edit User">
-    </div>
+
 </form>

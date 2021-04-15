@@ -4176,7 +4176,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-left: -20px;
   overflow-y: auto;
   background: linear-gradient(
-    90deg,
+    180deg,
     rgba(255, 121, 0, 1) 0%,
     rgba(127, 194, 28, 1) 90%,
     rgba(127, 194, 28, 1) 100%

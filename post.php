@@ -2,13 +2,13 @@
 include "includes/db.php";
 include "includes/header.php";
 ;?>
-    <!-- Navigation -->
-    <?php include "includes/navigation.php";?>
-    <!-- Page Content -->
-    <div class="container">
-      <div class="row">
+<!-- Navigation -->
+<?php include "includes/navigation.php";?>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
         <!-- Blog Entries Column -->
-       
+
         <?php if (isset($_GET['p_id'])){
         $the_post_id=$_GET['p_id'];
 
@@ -30,34 +30,26 @@ include "includes/header.php";
           $post_image=$row['post_image'];
           $post_content=$row['post_content'];
           ?>
-          
 
-<div class="col-md-8">
-          <h1 class="page-header">
-            Page Heading
-            <small>Secondary Text</small>
-          </h1>
 
-          <!-- First Blog Post -->
-          <h2>
-            <a href="#"><?php echo $post_title;?></a>
-          </h2>
-          <p class="lead">by <a href="index.php"><?php echo $post_author;?></a></p>
-          <p>
-            <span class="glyphicon glyphicon-time"></span> <?php echo $post_date;?>
-          </p>
-          <hr />
-          <img
-            class="img-responsive"
-            src="img/<?php echo $post_image; ?>"
-            alt=""
-          />
-          <hr />
-          <p>
-          <?php echo $post_content;?>
-          </p>
+        <div class="col-md-8">
 
-          <!-- Pager 
+            <!-- First Blog Post -->
+            <h2>
+                <?php echo $post_title;?>
+            </h2>
+            <p class="lead">by <a href="index.php"><?php echo $post_author;?></a></p>
+            <p>
+                <span class="glyphicon glyphicon-time"></span> <?php echo $post_date;?>
+            </p>
+            <hr />
+            <img class="img-responsive" src="img/<?php echo $post_image; ?>" alt="" />
+            <hr />
+            <p>
+                <?php echo $post_content;?>
+            </p>
+
+            <!-- Pager 
           <ul class="pager">
             <li class="previous"> 
               <a href="#">&larr; Older</a>
@@ -67,25 +59,25 @@ include "includes/header.php";
             </li>
           </ul>-->
         </div>
-          <?php
+        <?php
         }}
         else {
           header("Location: index.php");
         }
         ?>
-        
-        
+
+
 
         <!-- Blog Sidebar Widgets Column -->
         <?php include "includes/sidebar.php";?>
-      </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
-      <hr />
-      
-          <!-- Comments Form -->
+    <hr />
 
-        <?php
+    <!-- Comments Form -->
+
+    <?php
 
           if(isset($_POST['create_comment'])){
             $the_post_id=$_GET['p_id'];
@@ -112,30 +104,32 @@ include "includes/header.php";
         ?>
 
 
-          <div class="well">
-            <h4>Leave a Comment:</h4>
-            <form role="form" action="" method="post">
+    <div class="well">
+        <h4>Leave a Comment:</h4>
+        <form role="form" action="" method="post">
             <div class="form-group">
-            <label for="comment_author">Your Name:</label>
+                <label for="comment_author">Your Name:</label>
                 <input type="text" name="comment_author" class="form-control" placeholder="Enter Your Name here...">
-              </div>
-              <div class="form-group">
-              <label for="comment_email">Your Email:</label>
-                <input type="email" name="comment_email" class="form-control"  placeholder="Enter Your Email Address here...">
-              </div>
-              <div class="form-group">
-              <label for="comment_content">Your Comment:</label>
-                <textarea class="form-control" rows="3" placeholder="Your comment goes here..." name="comment_content"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" name="create_comment">Submit comment!</button>
-            </form>
-          </div>
+            </div>
+            <div class="form-group">
+                <label for="comment_email">Your Email:</label>
+                <input type="email" name="comment_email" class="form-control"
+                    placeholder="Enter Your Email Address here...">
+            </div>
+            <div class="form-group">
+                <label for="comment_content">Your Comment:</label>
+                <textarea class="form-control" rows="3" placeholder="Your comment goes here..."
+                    name="comment_content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" name="create_comment">Submit comment!</button>
+        </form>
+    </div>
 
-          <hr />
+    <hr />
 
-          <!-- Posted Comments -->
+    <!-- Posted Comments -->
 
-<?php
+    <?php
 
 $query = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
 $query.="AND comment_status = 'approved'";
@@ -153,27 +147,23 @@ while($row=mysqli_fetch_array($select_comment_query))
   
   ?>
 
-<!-- Comment -->
-<div class="media">
-            <a class="pull-left" href="#">
-              <img
-                class="media-object"
-                src="http://placehold.it/64x64"
-                alt=""
-              />
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading">
+    <!-- Comment -->
+    <div class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="http://placehold.it/64x64" alt="" />
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">
                 <?php echo $comment_author; ?>
                 <small><?php echo $comment_date; ?></small>
-              </h4>
-              <?php echo $comment_content; ?>
-            </div>
-          </div>   
-<?php } ?>
-
-
-
-           
+            </h4>
+            <?php echo $comment_content; ?>
+        </div>
     </div>
-    <?php include "includes/footer.php";?>
+    <?php } ?>
+
+
+
+
+</div>
+<?php include "includes/footer.php";?>
